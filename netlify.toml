@@ -1,0 +1,8 @@
+[build]
+  publish = "."
+
+# Keep old link working
+[[redirects]]
+  from = "/yash .html.html"
+  to = "/"
+  status = 301
