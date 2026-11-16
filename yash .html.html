@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Completion Announcement | TechOctanet Services Pvt. Ltd.</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        octa: {
+                            navy: '#050D1A',
+                            deep: '#0B1D42',
+                            royal: '#144299',
+                            blue: '#2563EB',
+                            cyan: '#06B6D4',
+                            gold: '#F59E0B',
+                            goldLight: '#FDE68A'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'slide-up': 'slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'fade-in': 'fadeIn 0.9s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: 1, boxShadow: '0 0 15px rgba(16, 185, 129, 0.5)' },
+                            '50%': { opacity: 0.85, boxShadow: '0 0 28px rgba(16, 185, 129, 0.85)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: 0, transform: 'translateY(28px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: 0 },
+                            '100%': { opacity: 1 },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050D1A;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(20, 66, 153, 0.4) 0px, transparent 55%),
+                radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.22) 0px, transparent 50%),
+                radial-gradient(at 50% 100%, rgba(245, 158, 11, 0.12) 0px, transparent 60%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .bg-grid-pattern {
+            background-size: 36px 36px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        .glass-panel {
+            background: rgba(11, 29, 66, 0.75);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+        }
+
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 50%, #38BDF8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+        }
+    </style>
+</head>
+<body class="text-slate-100 antialiased selection:bg-octa-cyan selection:text-octa-navy bg-grid-pattern">
+
+    <!-- Confetti Overlay -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Copy Toast Notification -->
+    <div id="toast-notification" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="flex items-center gap-3 bg-emerald-600/95 backdrop-blur-md text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-emerald-400/40">
+            <div class="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center">
+                <i class="fa-solid fa-check text-sm"></i>
+            </div>
+            <div>
+                <p class="font-semibold text-sm">Internship ID Copied!</p>
+                <p class="text-xs text-emerald-100">ID <span class="font-mono font-bold">08-2026-1015</span> copied to clipboard</p>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="w-full border-b border-white/10 bg-octa-navy/85 backdrop-blur-md sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Exact Official Uploaded Logo -->
+            <div class="flex items-center gap-3">
+                <div class="h-12 flex items-center bg-white px-3 py-1.5 rounded-xl shadow-md border border-cyan-400/30">
+                    <img src="1794492341784.jpeg" alt="TechOctanet Services Pvt. Ltd. Official Logo" class="h-full w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/180x50/ffffff/050D1A?text=TECH+OCTANET';">
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <span class="hidden md:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-slate-300">
+                    <i class="fa-solid fa-shield-halved text-cyan-400"></i>
+                    Official Portal Verification
+                </span>
+                <button onclick="triggerConfettiBurst()" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-semibold text-xs sm:text-sm shadow-lg shadow-amber-500/25 transition-all active:scale-95 cursor-pointer">
+                    <i class="fa-solid fa-sparkles"></i>
+                    <span>Celebrate</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+
+        <!-- Hero Card -->
+        <section class="glass-panel rounded-3xl p-6 sm:p-10 md:p-12 relative overflow-hidden animate-slide-up">
+            <div class="absolute -top-24 -right-24 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pb-8 border-b border-white/10">
+                <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-emerald-500/15 border border-emerald-400/40 text-emerald-300 animate-pulse-glow">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-400"></span>
+                    </span>
+                    <span class="text-xs sm:text-sm font-bold tracking-wide uppercase">Successfully Completed</span>
+                    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+                </div>
+
+                <div class="text-center sm:text-right">
+                    <p class="text-[11px] uppercase tracking-wider text-slate-400">Corporate Identity Number</p>
+                    <p class="font-mono text-xs font-semibold text-slate-200">U62013OD2023PTC044081</p>
+                </div>
+            </div>
+
+            <!-- Congratulations Section -->
+            <div class="text-center max-w-3xl mx-auto py-8 sm:py-10">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-400/20 to-cyan-400/20 border border-amber-300/30 mb-5 shadow-inner">
+                    <i class="fa-solid fa-award text-3xl text-amber-400"></i>
+                </div>
+
+                <h1 class="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tight text-gradient-gold mb-4">
+                    Congratulations!
+                </h1>
+
+                <p class="text-base sm:text-lg text-slate-300 font-medium mb-3">
+                    TechOctanet Services Pvt. Ltd. Internship Announcement
+                </p>
+
+                <div class="my-5">
+                    <span class="inline-block px-6 py-2.5 rounded-2xl bg-white/5 border border-white/15 font-display font-bold text-2xl sm:text-3xl md:text-4xl text-white tracking-tight shadow-lg">
+                        Yash Narendra Pawar
+                    </span>
+                </div>
+
+                <p class="text-slate-200 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mt-4">
+                    We proudly announce that <strong class="text-white font-semibold">  Yash Narendra Pawar
+</strong> has successfully completed the <strong class="text-cyan-300 font-semibold">2-Month Virtual Internship</strong> in <strong class="text-amber-300 font-semibold">Web Development</strong> with <strong class="text-white font-semibold">TechOctanet Services Pvt. Ltd.</strong>
+                </p>
+            </div>
+
+            <!-- Structured Credential Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-2">
+                <!-- Intern Name -->
+                <div class="rounded-2xl bg-octa-navy/80 border border-white/10 p-5 hover:border-cyan-400/40 transition-colors">
+                    <div class="flex items-center gap-2.5 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-2">
+                        <i class="fa-solid fa-user-graduate"></i>
+                        <span>Intern Name</span>
+                    </div>
+                    <p class="font-display font-bold text-lg text-white">Yash Narendra Pawar</p>
+                    <p class="text-xs text-slate-400 mt-1">Verified Candidate</p>
+                </div>
+
+                <!-- Domain -->
+                <div class="rounded-2xl bg-octa-navy/80 border border-white/10 p-5 hover:border-cyan-400/40 transition-colors">
+                    <div class="flex items-center gap-2.5 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-2">
+                        <i class="fa-solid fa-code"></i>
+                        <span>Domain</span>
+                    </div>
+                    <p class="font-display font-bold text-lg text-white">Web Development</p>
+                    <p class="text-xs text-slate-400 mt-1">Virtual Track</p>
+                </div>
+
+                <!-- Duration & Company -->
+                <div class="rounded-2xl bg-octa-navy/80 border border-white/10 p-5 hover:border-cyan-400/40 transition-colors">
+                    <div class="flex items-center gap-2.5 text-amber-400 text-xs font-semibold uppercase tracking-wider mb-2">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <span>Duration</span>
+                    </div>
+                    <p class="font-display font-bold text-lg text-white">2-Month</p>
+                    <p class="text-xs text-slate-400 mt-1">TechOctanet Services Pvt. Ltd.</p>
+                </div>
+
+                <!-- Intern ID -->
+                <div class="rounded-2xl bg-gradient-to-br from-blue-950/90 to-octa-navy border border-cyan-400/30 p-5">
+                    <div class="flex items-center justify-between text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">
+                        <span class="flex items-center gap-2">
+                            <i class="fa-solid fa-fingerprint"></i>
+                            <span>Intern ID</span>
+                        </span>
+                        <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-[10px] text-emerald-300">VALID</span>
+                    </div>
+                    <p class="font-mono font-bold text-xl text-amber-300 tracking-wide">08-2026-1015</p>
+                    <p class="text-xs text-slate-400 mt-1">Official Reference Code</p>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="mt-8 pt-7 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-300">
+                    <i class="fa-solid fa-circle-check text-cyan-400 text-base"></i>
+                    <span>Official Recognition by <strong class="text-white">TechOctanet Services Pvt. Ltd.</strong></span>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-center gap-3 w-full sm:w-auto">
+                    <button onclick="copyVerificationId()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl bg-octa-blue hover:bg-blue-500 text-white font-semibold text-sm shadow-lg shadow-blue-600/30 transition-all active:scale-95 cursor-pointer">
+                        <i class="fa-regular fa-copy"></i>
+                        <span>Copy Intern ID</span>
+                    </button>
+
+                    <button onclick="triggerConfettiBurst()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white font-semibold text-sm transition-all active:scale-95 cursor-pointer">
+                        <i class="fa-solid fa-sparkles text-amber-300"></i>
+                        <span>Replay Celebration</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Highlights Row -->
+        <section class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-5 animate-fade-in">
+            <div class="glass-panel rounded-2xl p-6">
+                <div class="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-400/30 flex items-center justify-center text-cyan-400 mb-4">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <h2 class="font-display font-bold text-base text-white mb-1.5">Web Development Excellence</h2>
+                <p class="text-sm text-slate-300 leading-relaxed">
+                    Demonstrated high commitment and executed practical web assignments successfully during the virtual internship.
+                </p>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-6">
+                <div class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-400/30 flex items-center justify-center text-amber-400 mb-4">
+                    <i class="fa-solid fa-medal"></i>
+                </div>
+                <h2 class="font-display font-bold text-base text-white mb-1.5">Professional Standards</h2>
+                <p class="text-sm text-slate-300 leading-relaxed">
+                    Exhibited strong technical aptitude, punctuality, and professionalism throughout the tenure.
+                </p>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-6">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center text-emerald-400 mb-4">
+                    <i class="fa-solid fa-fingerprint"></i>
+                </div>
+                <h2 class="font-display font-bold text-base text-white mb-1.5">Verified Credential</h2>
+                <p class="text-sm text-slate-300 leading-relaxed">
+                    Registered under ID <span class="font-mono text-amber-300 font-semibold">08-2026-1015</span> in the official intern records.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 bg-octa-navy/90 py-8 mt-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+            <div class="flex items-center gap-2.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+                <span class="font-semibold text-slate-200">TechOctanet Services Pvt. Ltd.</span>
+            </div>
+            <p class="text-center sm:text-right">
+                Intern ID: <span class="font-mono text-slate-200">08-2026-1015</span> • All Rights Reserved
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function copyVerificationId() {
+            const idText = "08-2026-1015";
+            const tempInput = document.createElement("textarea");
+            tempInput.value = idText;
+            tempInput.style.position = "fixed";
+            tempInput.style.opacity = "0";
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            tempInput.setSelectionRange(0, 99999);
+
+            try {
+                document.execCommand("copy");
+                showToast();
+            } catch (err) {
+                console.error("Failed to copy ID:", err);
+            } finally {
+                document.body.removeChild(tempInput);
+            }
+        }
+
+        let toastTimeout;
+        function showToast() {
+            const toast = document.getElementById("toast-notification");
+            toast.classList.remove("translate-y-24", "opacity-0");
+            toast.classList.add("translate-y-0", "opacity-100");
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add("translate-y-24", "opacity-0");
+                toast.classList.remove("translate-y-0", "opacity-100");
+            }, 3200);
+        }
+
+        const canvas = document.getElementById("confetti-canvas");
+        const ctx = canvas.getContext("2d");
+        let particles = [];
+        let animationFrameId = null;
+
+        const brandColors = ["#38BDF8", "#3B82F6", "#F59E0B", "#FDE68A", "#10B981", "#FFFFFF"];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener("resize", resizeCanvas);
+        resizeCanvas();
+
+        class ConfettiParticle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = 4 + Math.random() * 9;
+                this.vx = Math.cos(angle) * velocity;
+                this.vy = Math.sin(angle) * velocity - 4;
+                this.gravity = 0.22;
+                this.drag = 0.97;
+                this.size = 6 + Math.random() * 6;
+                this.color = brandColors[Math.floor(Math.random() * brandColors.length)];
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = (Math.random() - 0.5) * 12;
+                this.opacity = 1;
+                this.shape = Math.random() > 0.35 ? "rect" : "circle";
+            }
+
+            update() {
+                this.vx *= this.drag;
+                this.vy = this.vy * this.drag + this.gravity;
+                this.x += this.vx;
+                this.y += this.vy;
+                this.rotation += this.rotationSpeed;
+                if (this.y > canvas.height * 0.75) {
+                    this.opacity -= 0.018;
+                }
+            }
+
+            draw() {
+                if (this.opacity <= 0) return;
+                ctx.save();
+                ctx.globalAlpha = Math.max(0, this.opacity);
+                ctx.translate(this.x, this.y);
+                ctx.rotate((this.rotation * Math.PI) / 180);
+                ctx.fillStyle = this.color;
+
+                if (this.shape === "rect") {
+                    ctx.fillRect(-this.size / 2, -this.size / 4, this.size, this.size * 0.55);
+                } else {
+                    ctx.beginPath();
+                    ctx.arc(0, 0, this.size / 2.5, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.restore();
+            }
+        }
+
+        function triggerConfettiBurst() {
+            const centerX = canvas.width / 2;
+            const burstY = Math.min(canvas.height * 0.32, 260);
+
+            for (let i = 0; i < 85; i++) {
+                particles.push(new ConfettiParticle(centerX - 80, burstY));
+                particles.push(new ConfettiParticle(centerX + 80, burstY));
+            }
+
+            if (!animationFrameId) {
+                animateConfetti();
+            }
+        }
+
+        function animateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach((p) => {
+                p.update();
+                p.draw();
+            });
+
+            particles = particles.filter((p) => p.opacity > 0 && p.y < canvas.height + 40);
+
+            if (particles.length > 0) {
+                animationFrameId = requestAnimationFrame(animateConfetti);
+            } else {
+                animationFrameId = null;
+            }
+        }
+
+        window.addEventListener("load", () => {
+            setTimeout(triggerConfettiBurst, 350);
+        });
+    </script>
+</body>
+</html>
